@@ -15,7 +15,7 @@ function CardList() {
         setIsLoading(true) // Reset on every API call
         setIsError(false)  // Reset on every API call
 
-        axios.get(`https://jsonplaceholder.typicode.com/${url}`)
+        axios.get(`ttps://jsonplaceholder.typicode.com/${url}`)
             .then(response => {
                 setData(response.data) // Saving API data into state, so we can handle it
                 setIsLoading(false) // Making loading false, so it will not render/show
@@ -30,17 +30,17 @@ function CardList() {
     return (
         <>
             <Header setUrl={setUrl} />
+            <h2 className="list-name">{
+                !isLoading && !isError && url === "users" ? "Users" :
+                    url === "todos" ? "Todos" :
+                        url === "posts" ? "Posts" :
+                            url === "albums" ? "Albums" :
+                                "Comments"
+            }</h2>
+
             {isLoading && <h2 style={{ textAlign: "center" }}>Loading... <div className='loader'></div></h2>}
             {isError && <h2 style={{ textAlign: "center", color: "red" }}>Something went wrong!</h2>}
-            <div className="list-name">
-                {
-                !isLoading && !isError && url === "users" ? <h2>Users</h2> :
-                                          url === "todos" ? <h2>Todos</h2> :
-                                          url === "posts" ? <h2>Posts</h2> :
-                                          url === "albums" ? <h2>Albums</h2> :
-                                          <h2>Comments</h2>
-                }
-            </div>
+            
             <div className='card-list'>
                 {!isLoading && !isError &&
                     (url === "users" && data?.slice(0, 10).map((item, index) => (
