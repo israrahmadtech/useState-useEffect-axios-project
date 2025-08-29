@@ -27,9 +27,17 @@ ul{
   padding: 10px 15px;
   border: none;
   border-radius: 20px;
-  background: #e0e0e0;
+  background-color: #e0e0e0;
   box-shadow: 0 0 5px #bbb;
   cursor: pointer;
+}
+#header nav ul button.active-btn {
+  background-color: cyan;
+}
+
+
+.list-name h2{
+  padding-left: 30px;
 }
 
 .card-list{
